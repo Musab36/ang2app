@@ -1,4 +1,7 @@
 import {Component} from 'angular2/core'; // We are importing our component
+import {TestComponent} from './test.component';
+import {MessageComponent} from './message.component';
+import {OnInit} from 'angular2/core';
 
 @Component({
     selector: 'my-component', // A new component html binding tag
@@ -11,9 +14,15 @@ import {Component} from 'angular2/core'; // We are importing our component
       <input type="text" #inputElement (keyup)="0">
       <br><br>
       <button [disabled]="inputElement.value !== 'yes'">Only enabled if 'yes' was entered</button>
+      <test></test>
+      <message></message>
     `,
-    styleUrls: ['src/css/mycomponent.css']
+    styleUrls: ['src/css/mycomponent.css'],
+    directives: [TestComponent, MessageComponent]
 })
-export class MyComponentComponent { // Exporting a new component class to be available outside this component
-  name = 'Musab';
+export class MyComponentComponent implements OnInit { // Exporting a new component class to be available outside this component
+  name: string;
+  ngOnInit():any {
+    this.name = "Musab Abdirahman"
+  }
 }
